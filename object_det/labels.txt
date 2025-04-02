@@ -1,0 +1,7 @@
+0 Pepsi
+1 milk
+2 Coffee Nescafe
+3 SNICKERS
+4 Cheese
+5 water bottle
+6 walnuts

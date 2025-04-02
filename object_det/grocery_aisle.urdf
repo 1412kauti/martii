@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<robot name="grocery_aisle">
+
+  <!-- Base link (root of the environment) -->
+  <link name="base_link">
+    <inertial>
+      <mass value="0.01"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- Left Shelf -->
+  <link name="left_shelf">
+    <inertial>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.3 4 2"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.3 4 2"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </collision>
+  </link>
+  <joint name="left_shelf_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_shelf"/>
+    <origin xyz="-1 0 1"/>
+  </joint>
+
+  <!-- Right Shelf -->
+  <link name="right_shelf">
+    <inertial>
+      <mass value="0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.3 4 2"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.3 4 2"/>
+      </geometry>
+      <origin xyz="0 0 0"/>
+    </collision>
+  </link>
+  <joint name="right_shelf_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_shelf"/>
+    <origin xyz="1 0 1"/>
+  </joint>
+
+    <!-- Photo 1 on Left Shelf -->
+  <link name="photo_1">
+    <visual>
+      <!-- 
+        The box's X dimension is 0.01 (thin), Y=1.0 (width), Z=1.0 (height).
+        The photo extends ±0.5m in Y and Z from its link origin. 
+        The 'xyz' offset moves it 0.16m outward in +X so that it's flush.
+      -->
+      <origin xyz="0.16 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 1.0 1.0"/>
+      </geometry>
+      <material name="photo1">
+        <color rgba="1 1 1 1"/>
+        <texture filename="/home/mousa/demo/textures/photo1.jpg"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="photo1_joint" type="fixed">
+    <parent link="left_shelf"/>
+    <child link="photo_1"/>
+    <!-- No extra offset between the shelf link and the photo link -->
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Photo 2 on Right Shelf -->
+  <link name="photo_2">
+    <visual>
+      <!-- 
+        Same box dimensions; we move it -0.16m along +X to place it flush
+        to the outward face of the right shelf.
+      -->
+      <origin xyz="-0.16 0 0.5" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 1.0 1.0"/>
+      </geometry>
+      <material name="photo2">
+        <color rgba="1 1 1 1"/>
+        <texture filename="/home/mousa/demo/textures/photo2.jpg"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="photo2_joint" type="fixed">
+    <parent link="right_shelf"/>
+    <child link="photo_2"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+</robot>

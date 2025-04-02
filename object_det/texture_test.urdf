@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot name="texture_test">
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="1 1 1"/>
+      </geometry>
+      <material name="test_mat">
+        <color rgba="1 1 1 1"/>
+        <texture filename="/home/mousa/demo/textures/photo1.png"/>
+      </material>
+    </visual>
+  </link>
+</robot>
