@@ -1,1 +1,6 @@
  Ensure your python interpreter is set at Python 3.11
+
+Files to Run:
+16_combined_14_15_2.py
+17_face_eye_detection.py
+theft.py
